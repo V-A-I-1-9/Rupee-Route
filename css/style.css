@@ -1,0 +1,214 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    background-color: #1c1e2f; /* Dark background */
+    color: #ffffff; /* Light text */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #2a3042 !important; /* Darker navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-left: 20px; /* Add some padding */
+    padding-right: 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo-small {
+    margin-right: 10px; /* Space between logo and text */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+.brand-text{
+    color: #ffffff;
+}
+
+.navbar-brand:hover .logo-small {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Splash Screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1c1e2f; /* Match body background */
+    z-index: 1000; /* Ensure it's on top */
+     /* Add a subtle blurred background image */
+     background-image: url('../images/logo.png'); /* Use the logo as a background */
+     background-size: 30%; /* Adjust size as needed */
+     background-position: center;
+     background-repeat: no-repeat;
+     filter: blur(5px); /* Apply blur */
+
+}
+
+#splash-screen img {
+    max-width: 80%; /* Responsive logo */
+    max-height: 80vh;
+}
+
+
+/* Card Styling */
+.card {
+    background-color: rgba(42, 48, 66, 0.8); /* Translucent cards */
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px; /* More spacing */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+    color: #f0c808; /* Yellow from the logo */
+}
+
+/* Table Styling */
+#expenses-table {
+    width: 100%;
+    color: #333; /* Darker text for table */
+}
+
+#expenses-table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    text-align: center;
+}
+
+#expenses-table td {
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    text-align: center;
+}
+
+#expenses-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #f0c808; /* Yellow from logo */
+    border-color: #f0c808;
+    color: #1c1e2f;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d4b407; /* Slightly darker yellow on hover */
+    border-color: #d4b407;
+}
+
+.btn-info, .btn-danger {
+    color: #fff; /* White text on info/danger buttons */
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #2a3042; /* Match navbar color */
+    color: #fff;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #3a4158;
+}
+
+.modal-footer {
+    border-top: 1px solid #3a4158;
+}
+
+/* Chart Colors (adjust to match logo) */
+.chart-color-1 {
+    background-color: rgba(240, 200, 8, 0.5); /* Yellow */
+    border-color: rgba(240, 200, 8, 1);
+}
+
+.chart-color-2 {
+    background-color: rgba(41, 171, 226, 0.5); /* Blue */
+    border-color: rgba(41, 171, 226, 1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem; /* Smaller brand text on small screens */
+    }
+    .brand-text{
+        font-size: 1rem;
+    }
+}
+/* Table Styling */
+#expenses-table { /* Keep existing styles if needed */
+    /* ... your existing styles ... */
+    color: #333; /* Darker text for expense table */
+}
+
+#expenses-table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    text-align: center;
+}
+
+#expenses-table td {
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    text-align: center;
+}
+
+#expenses-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping */
+}
+
+
+/* --- NEW STYLES for Income, Investments, Budgets Tables --- */
+
+/* Target the specific tables */
+#income-table,
+#investments-table,
+#budgets-table {
+    width: 100%;
+    margin-bottom: 1rem; /* Add some bottom margin */
+    color: #ffffff; /* <<< SET TEXT COLOR TO WHITE */
+    background-color: transparent; /* Ensure no conflicting background */
+}
+
+/* Style the table headers for these tables */
+#income-table thead th,
+#investments-table thead th,
+#budgets-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #4a516e; /* Darker border */
+    background-color: #2a3042; /* Match navbar color */
+    color: #f0c808; /* Yellow accent for headers */
+    text-align: center; /* Center align headers */
+    padding: 0.75rem;
+}
+
+/* Style the table body cells for these tables */
+#income-table tbody td,
+#investments-table tbody td,
+#budgets-table tbody td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #3a4158; /* Lighter border for rows */
+    text-align: center; /* Center align cell content */
+}
+
+/* Optional: Add subtle hover effect for rows */
+#income-table tbody tr:hover,
+#investments-table tbody tr:hover,
+#budgets-table tbody tr:hover {
+    background-color: rgba(42, 48, 66, 0.5); /* Slightly lighter background on hover */
+}
+
+/* --- End NEW STYLES --- */

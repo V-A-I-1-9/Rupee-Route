@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Reports</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
+        <a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="Expense Tracker Logo" height="30" class="d-inline-block align-top logo-small">
+            <span class="brand-text">Rupee Route</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="add_expense.html">Add Expense</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="view_expenses.html">View Expenses</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="income.html">Manage Income</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="investments.html">Investments</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="budgets.html">Budgets</a> </li>
+                <li class="nav-item active"> <a class="nav-link" href="reports.html">Reports</a> </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <h1 class="text-center mb-4">Expense Reports</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="report-start-date">Start Date</label>
+                    <input type="date" class="form-control" id="report-start-date">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="report-end-date">End Date</label>
+                    <input type="date" class="form-control" id="report-end-date">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="report-category">Category</label>
+                    <select class="form-control" id="report-category" name="category">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be loaded here -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" id="generate-report-btn">Generate Report</button>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <canvas id="reportChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Function to load categories into the report filter dropdown
+        function loadCategoriesReportFilter() {
+            $.ajax({
+                url: "get_categories.php",
+                type: "GET",
+                dataType: "json",
+                success: function (categories) {
+                    const categorySelect = $("#report-category");
+                    categories.forEach(function (category) {
+                        categorySelect.append(`<option value="${category.id}">${category.name}</option>`);
+                    });
+                },
+                error: function () {
+                    alert("Error loading categories for report filter.");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

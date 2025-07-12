@@ -1,0 +1,17 @@
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor folders
+.idea/
+.vscode/
+
+# Ignore log files
+*.log
+
+# Ignore MySQL dumps or sensitive data if any
+*.sql
+
+# Ignore any sensitive config files (if you have any with credentials)
+config.php
+.env

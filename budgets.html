@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manage Budgets</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
+             <!-- Navbar Content (Copy from index.html, update active link) -->
+              <a class="navbar-brand" href="#">
+                 <img src="images/logo.png" alt="Expense Tracker Logo" height="30" class="d-inline-block align-top logo-small">
+                 <span class="brand-text">Rupee Route</span>
+             </a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav">
+                     <li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="add_expense.html">Add Expense</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="view_expenses.html">View Expenses</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="income.html">Manage Income</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="investments.html">Investments</a> </li>
+                     <li class="nav-item active"> <a class="nav-link" href="budgets.html">Budgets <span class="sr-only">(current)</span></a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="reports.html">Reports</a> </li>
+                 </ul>
+             </div>
+         </nav>
+
+        <div class="container mt-5 pt-4">
+            <h1 class="text-center mb-4">Manage Monthly Budgets</h1>
+
+             <!-- Add/Update Budget Form -->
+            <div class="card bg-card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Set Budget for Category</h5>
+                    <form id="budget-form">
+                        <div class="form-row">
+                             <div class="form-group col-md-4">
+                                <label for="budget-category">Category</label>
+                                <select class="form-control" id="budget-category" name="category_id" required>
+                                    <option value="">Select Category</option>
+                                    <!-- Categories loaded via JS -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="budget-month">Month</label>
+                                <select class="form-control" id="budget-month" name="budget_month" required>
+                                    <!-- Months loaded via JS -->
+                                </select>
+                            </div>
+                             <div class="form-group col-md-3">
+                                <label for="budget-year">Year</label>
+                                <input type="number" class="form-control" id="budget-year" name="budget_year" min="2000" max="2099" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="budget-amount">Amount</label>
+                                <input type="number" class="form-control" id="budget-amount" name="budget_amount" step="0.01" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Set/Update Budget</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- View Budgets Table -->
+             <h2 class="text-center mb-3">Existing Budgets</h2>
+             <div class="table-responsive">
+                 <table class="table table-striped table-bordered" id="budgets-table">
+                     <thead>
+                         <tr>
+                             <th>ID</th>
+                             <th>Category</th>
+                             <th>Month</th>
+                             <th>Year</th>
+                             <th>Budget Amount</th>
+                             <!-- Add Actions if needed -->
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <!-- Budget data will be loaded here -->
+                     </tbody>
+                 </table>
+             </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+        <script>
+            // Function to populate month dropdown
+            function populateMonths() {
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const monthSelect = $("#budget-month");
+                months.forEach((month, index) => {
+                    monthSelect.append(`<option value="${index + 1}">${month}</option>`);
+                });
+                // Set default to current month
+                monthSelect.val(new Date().getMonth() + 1);
+            }
+
+             // Function to set default year
+            function setDefaultYear() {
+                $("#budget-year").val(new Date().getFullYear());
+            }
+
+
+            $(document).ready(function() {
+                loadCategoriesBudget(); // Load categories into the budget form dropdown
+                populateMonths();
+                setDefaultYear();
+                loadBudgets(); // Load existing budgets
+            });
+        </script>
+    </body>
+    </html>

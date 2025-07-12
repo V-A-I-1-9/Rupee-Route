@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manage Investments</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
+             <!-- Navbar Content (Copy from index.html, update active link) -->
+             <a class="navbar-brand" href="#">
+                 <img src="images/logo.png" alt="Expense Tracker Logo" height="30" class="d-inline-block align-top logo-small">
+                 <span class="brand-text">Rupee Route</span>
+             </a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav">
+                     <li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="add_expense.html">Add Expense</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="view_expenses.html">View Expenses</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="income.html">Manage Income</a> </li>
+                     <li class="nav-item active"> <a class="nav-link" href="investments.html">Investments <span class="sr-only">(current)</span></a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="budgets.html">Budgets</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="reports.html">Reports</a> </li>
+                 </ul>
+             </div>
+         </nav>
+
+        <div class="container mt-5 pt-4">
+            <h1 class="text-center mb-4">Manage Investments</h1>
+
+            <!-- Add Investment Form -->
+            <div class="card bg-card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Investment</h5>
+                    <form id="investment-form">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inv-fund-name">Fund/Stock Name</label>
+                                <input type="text" class="form-control" id="inv-fund-name" name="fund_name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inv-type">Investment Type</label>
+                                <select class="form-control" id="inv-type" name="investment_type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Mutual Fund SIP">Mutual Fund SIP</option>
+                                    <option value="Stock">Stock</option>
+                                    <option value="Fixed Deposit">Fixed Deposit</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                         <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inv-sip-amount">SIP Amount (Optional)</label>
+                                <input type="number" class="form-control" id="inv-sip-amount" name="sip_amount" step="0.01">
+                            </div>
+                             <div class="form-group col-md-4">
+                                <label for="inv-sip-day">SIP Day of Month (Optional)</label>
+                                <input type="number" class="form-control" id="inv-sip-day" name="sip_day_of_month" min="1" max="31">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inv-start-date">Start Date (Optional)</label>
+                                <input type="date" class="form-control" id="inv-start-date" name="start_date">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                             <div class="form-group col-md-6">
+                                <label for="inv-folio">Folio Number (Optional)</label>
+                                <input type="text" class="form-control" id="inv-folio" name="folio_number">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inv-notes">Notes (Optional)</label>
+                                <textarea class="form-control" id="inv-notes" name="notes" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Add Investment</button>
+                    </form>
+                </div>
+            </div>
+
+             <!-- View Investments Table -->
+             <h2 class="text-center mb-3">Your Investments</h2>
+             <div class="table-responsive">
+                 <table class="table table-striped table-bordered" id="investments-table">
+                     <thead>
+                         <tr>
+                             <th>ID</th>
+                             <th>Fund Name</th>
+                             <th>Type</th>
+                             <th>SIP Amount</th>
+                             <th>SIP Day</th>
+                             <th>Start Date</th>
+                             <th>Folio No.</th>
+                             <th>Notes</th>
+                             <!-- Add Actions if needed -->
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <!-- Investment data will be loaded here -->
+                     </tbody>
+                 </table>
+             </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+        <script>
+            $(document).ready(function() {
+                loadInvestments(); // Load investment data when the page loads
+            });
+        </script>
+    </body>
+    </html>

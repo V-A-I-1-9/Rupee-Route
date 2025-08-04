@@ -61,10 +61,17 @@ To get a local copy up and running, follow these simple steps.
 *(Here you can add screenshots of your application to showcase its features.)*
 
 **Dashboard:**
-![Dashboard Screenshot](path/to/dashboard_screenshot.png)
+<img width="1767" height="836" alt="image" src="https://github.com/user-attachments/assets/6f9b4735-cf41-4802-9405-f0402007aee8" />
+
 
 **Add Expense Page:**
-![Add Expense Screenshot](path/to/add_expense_screenshot.png)
+<img width="1694" height="783" alt="image" src="https://github.com/user-attachments/assets/cceb9af5-a322-46a7-a592-ed62ad7d7519" />
+
+**View Expenses Page:**
+<img width="1737" height="795" alt="image" src="https://github.com/user-attachments/assets/6120e359-b8ed-4abf-ab5d-a8a0e5a0d7db" />
+
+**Reports Page:**
+<img width="1543" height="714" alt="image" src="https://github.com/user-attachments/assets/8cc5bc30-9b00-4141-a013-adeabc6270a7" />
 
 ## Contributing
 
